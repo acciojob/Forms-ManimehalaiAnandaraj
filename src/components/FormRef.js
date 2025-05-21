@@ -1,42 +1,52 @@
 import { useRef } from 'react';
 import Card from './Card';
 
-export default function FormRef() {
-  const nameRef = useRef();
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  const confirmRef = useRef();
+const FormRef= () => {
+  const formRef = useRef(null);
+  const fullNameRef = useRef(null);
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+  const passwordconfirmationRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({
-      name: nameRef.current.value,
+    
+    const formData ={
+      full_name: fullNameRef.current.value,
       email: emailRef.current.value,
-      password: passwordRef.current.value
-    });
+      password: passwordRef.current.value,
+      password_confirmation:passwordconfirmationRef.current.value
+     
+    };
+    console.log("Form submitted with useRef",formData);
   };
 
   return (
     <Card>
-      <form id="info-form" onSubmit={handleSubmit}>
+      <form id="info-form" onSubmit={handleSubmit} ref={formRef}>
         <div>
-          <label>Full Name:</label>
-          <input type="text" id="full_name" ref={nameRef} />
+          <label htmlFor='full_name'>Full Name:</label>
+          <input type="text" id="full_name" ref={fullNameRef} />
         </div>
+
         <div>
-          <label>Email:</label>
+          <label htmlFor='email'>Email:</label>
           <input type="email" id="email" ref={emailRef} />
         </div>
+
         <div>
-          <label>Password:</label>
+          <label htmlFor='password'>Password:</label>
           <input type="password" id="password" ref={passwordRef} />
         </div>
         <div>
-          <label>Confirm Password:</label>
-          <input type="password" id="password_confirmation" ref={confirmRef} />
+          <label htmlFor='password_confirmation'>Confirm Password:</label>
+          <input type="password" id="password_confirmation" ref={passwordconfirmationRef} />
         </div>
+        
         <button type="submit">Submit</button>
       </form>
     </Card>
   );
 }
+
+export default FormRef;

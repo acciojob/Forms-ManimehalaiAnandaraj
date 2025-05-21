@@ -1,64 +1,74 @@
 import { useState } from 'react';
 import Card from './Card';
 
-export default function FormState() {
+const FormState=() => {
   const [formData, setFormData] = useState({
-    fullName: '',
+    full_name: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    password_confirmation: ''
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
+  const handleChange = (e) => {
+   const {id,value} =e.target;
+   setFormData(prev => ({
+    ...prev,
+    [id] : value
+     }));
   };
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.id]: e.target.value
-    });
+  const handleSubmit = (e) => {
+   e.preventDefault();
+   console.log('Form submitted with useState',formData);
   };
 
   return (
     <Card>
       <form id="info-form" onSubmit={handleSubmit}>
         <div>
-          <label>Full Name:</label>
+          <label htmlFor='full_name'>Full Name:</label>
           <input 
             type="text" 
-            id="fullName" 
+            id="full_name" 
+            value={formData.full_name}
             onChange={handleChange}
           />
         </div>
+
         <div>
-          <label>Email:</label>
+          <label htmlFor='email'>Email:</label>
           <input 
             type="email" 
             id="email" 
+            value={formData.email}
             onChange={handleChange}
           />
         </div>
+
         <div>
-          <label>Password:</label>
+          <label htmlFor='password'>Password:</label>
           <input 
             type="password" 
             id="password" 
+            value={formData.password}
             onChange={handleChange}
           />
         </div>
+
         <div>
-          <label>Confirm Password:</label>
+          <label htmlFor='password_confirmation'>Confirm Password:</label>
           <input 
             type="password" 
             id="confirmPassword" 
+            value={formData.password_confirmation}
             onChange={handleChange}
           />
         </div>
+        
         <button type="submit">Submit</button>
       </form>
     </Card>
   );
 }
 
+export default FormState;

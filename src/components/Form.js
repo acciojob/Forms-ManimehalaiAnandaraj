@@ -1,23 +1,23 @@
 import Card from "./Card";
-
-export default function Form() {
+const Form=()=> {
   return (
     <Card>
       <form id="info-form">
         <div>
-          <label>Full Name:</label>
+          <label htmlFor="full_name">Full Name:</label>
           <input type="text" id="full_name" />
         </div>
         <div>
-          <label>Email:</label>
-          <input type="email" id="email" />
+          <label htmlFor="email">Email:</label>
+          <input type="email" id="email"></input>
         </div>
+
         <div>
-          <label>Password:</label>
+          <label htmlFor="password">Password:</label>
           <input type="password" id="password" />
         </div>
         <div>
-          <label>Confirm Password:</label>
+          <label htmlFor="password_confirmation">Confirm Password:</label>
           <input type="password" id="password_confirmation" />
         </div>
         <button type="submit">Submit</button>
@@ -25,3 +25,5 @@ export default function Form() {
     </Card>
   );
 }
+
+export default Form

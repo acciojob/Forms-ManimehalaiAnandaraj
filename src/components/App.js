@@ -1,12 +1,13 @@
-//import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
-import React from 'react';
+import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 import Form from './Form';
 import FormRef from './FormRef';
 import FormState from './FormState';
+import Card from './Card';
 
  function App() {
   return (
     <Router>
+      <div className='app'>
       <nav>
         <Link to="/form" id="form-link">Section 1</Link> | 
         <Link to="/form-ref" id="form-ref-link">Section 2</Link> | 
@@ -18,6 +19,7 @@ import FormState from './FormState';
         <Route path="/form-ref" element={<FormRef />} />
         <Route path="/form-state" element={<FormState />} />
       </Routes>
+      </div>
     </Router>
   );
 }
