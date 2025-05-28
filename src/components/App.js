@@ -5,7 +5,8 @@ import FormRef from './FormRef';
 import FormState from './FormState';
 
 const App = () => (
-  <Router>
+  
+    <Router>
     <div>
       <nav>
         <ul>
@@ -28,6 +29,7 @@ const App = () => (
       </Routes>
     </div>
   </Router>
+  
 );
 
 export default App;
